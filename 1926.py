@@ -27,11 +27,10 @@ def bfs(x,y):
             nx = x+dx[i]
             ny = y+dy[i]
 
-            if nx<0 or nx>=n or ny<0 or ny>=m:
+            if nx<0 or nx>=n or ny<0 or ny>=m: 
                 continue
             
             if graph[nx][ny] and not check[nx][ny]:
-                
                 queue.append((nx,ny))
                 check[nx][ny]=True
                 ret+=1
@@ -42,6 +41,6 @@ for x in range(n):
         if not check[x][y] and graph[x][y]:
             size_max=max(size_max,bfs(x,y))
             total+=1
-            
+
 print(total)
 print(size_max)
