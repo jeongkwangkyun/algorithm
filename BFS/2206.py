@@ -5,7 +5,6 @@ import sys
 graph=[]
 dx=[1,-1,0,0]
 dy=[0,0,-1,1]
-
 minsize=sys.maxsize
 
 n,m =map(int,input().split())
@@ -13,36 +12,39 @@ n,m =map(int,input().split())
 for i in range(n):
   graph.append(list(map(int,input())))
 
+check=[[[-1]*2 for _ in range(m)] for _ in range(n)]
 
-def bfs(x,y):
+def bfs():
   queue=deque()
-  queue.append((x,y))
-  check=[[0]*m for _ in range(n)]
-  ret=0
+  queue.append((0,0,0))
+  check[0][0][0]=1
+  
   while queue:
-    x,y = queue.popleft()
+    x,y,z = queue.popleft()
     for i in range(4):
       nx= x + dx[i]
       ny= y + dy[i]
-      if 0<=nx<n and 0<=ny<m and graph[nx][ny]==0 and check[nx][ny]==0:
-        queue.append((nx,ny))
-        check[nx][ny]=check[x][y]+1
-  if check[n-1][m-1]==0:
-    ret=sys.maxsize
-    return ret
-  else:
-    return check[n-1][m-1]
+      if 0<=nx<n and 0<=ny<m :
+        #벽을 부술경우와 안부술경우 두가지로 나눈다
+        # check 3차원 리스트로 z가 부순경우 안부수경우 판단
+        
+        # 안부술경우, 한번 부수고 나선 z=1에다가 담는다
+        if graph[nx][ny]==0 and check[nx][ny][z]==-1:
+          check[nx][ny][z]=check[x][y][z]+1
+          queue.append((nx,ny,z))
+        # 벽을 만나서 처음으로 부수는 경우 
+        elif z==0 and graph[nx][ny]==1 and check[nx][ny][z+1]==-1:
+          check[nx][ny][z+1]=check[x][y][z]+1
+          queue.append((nx,ny,z+1))
 
+bfs()
 
-minsize=bfs(0,0)
+ret1,ret2 =check[n-1][m-1][0],check[n-1][m-1][1]
 
-for i in range(n):
-  for j in range(m):
-    if graph[i][j]==1:
-      graph[i][j]=0
-      minsize=min(minsize,bfs(0,0))
-      graph[i][j]=1
-if minsize==sys.maxsize:
-  print(-1)
+if ret1==-1 and ret2!=-1:
+  print(ret2)
+elif ret1!=-1 and ret2==-1:
+  print(ret1)
 else:
-  print(minsize+1)
+  print(min(ret1,ret2))
+
