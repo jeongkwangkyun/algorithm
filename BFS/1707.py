@@ -1,5 +1,5 @@
 # graph 정점에 위치에 서로 연결된 간선 넣어주고, 
-# check 값을 0으로 초기화한 다음 bfs를 돌리면 -1 값을 곱해주어서
+# check 값을 0으로 초기화한 다음 bfs를 돌리면  check 값이 0이면(방문하지 않은값)-1 값을 곱해주고 
 # 그 전 값과 지금의 값이 같게되면(=서로 연결된 값이 같은 색이므로  이분 그래프 X
 from collections import deque
 import sys
@@ -37,7 +37,7 @@ for _ in range(k):
             ret=bfs(i)
             if ret == 1:
                 break
-            
+
     if ret==0:
         print("YES")
     else:
