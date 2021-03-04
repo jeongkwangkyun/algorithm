@@ -1,3 +1,5 @@
+# 입력 받은 스타트와 엔드를 그래프에 양방향으로 넣어주고 둘 중 하나를 받아서 
+# bfs 돌리기... check 값을 1씩 더해서 촌수 계산
 from collections import deque
 import sys
 input=sys.stdin.readline
@@ -25,7 +27,7 @@ def bfs(start,end):
                 queue.append(nx)
                 check[nx]=check[x]+1
     return check[end]
-    
+
 cnt=bfs(start-1,end-1)
 
 if cnt==0:
