@@ -1,3 +1,7 @@
+#빙산 BFS
+# 빙산이 없을 경우를 count로 세주고 bfs를 먼저 돌린다음 
+# 체크 값은 돌때마다 새로 선언해주어서 신경 쓸 필요없으며
+#
 from collections import deque
 import sys
 input=sys.stdin.readline
