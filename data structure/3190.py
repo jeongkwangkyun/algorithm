@@ -11,7 +11,7 @@ queue=deque() # 뱀의 방향 변환 정보 담는곳
 
 dx=[0,-1,0,1]
 dy=[1,0,-1,0]
-snake_queue=deque() #뱀의 현재 머리부터 몸까지의 위치를 담아놓는곳
+snake_queue=deque() #뱀의 현재 머리부터 꼬리까지의 위치를 담아놓는곳
 
 k=int(input())
 for _ in range(k):
