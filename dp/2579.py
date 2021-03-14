@@ -1,3 +1,5 @@
+# 계단 오르기
+# dp
 import sys
 
 input=sys.stdin.readline
@@ -19,7 +21,7 @@ for i in range(n):
     # 세번째 dp 비교
     elif i==2:
         dp[i]=max(dp[i-2]+stairs[i],stairs[i-1]+stairs[i])
-    # 마지막 + 직전(n-1) + 두칸전         ,     마지막 + 두칸전(n-2)  이렇게 비교하면 3번째 연속인게 없다
+    # 마지막 + 한칸 전(n-1) + 세칸전dp         ,     마지막 + 두칸전dp(n-2)  이렇게 비교하면 3번째 연속인게 없다
     else:
         dp[i]=max(stairs[i]+stairs[i-1]+dp[i-3],stairs[i]+dp[i-2])
     
