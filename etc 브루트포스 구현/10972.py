@@ -1,6 +1,5 @@
 # 다음 순열
 # permutations 쓰면 메모리 초과
-from itertools import permutations
 import sys
 input=sys.stdin.readline
 
@@ -21,14 +20,14 @@ def next(total):
     if i==0: # 마지막 순열
         return False
     
-    # i-1를 오른쪽에서 가장 큰 값 바꿔주기
+    # i-1를 오른쪽에서 값 바꿔주기
     j=n
     while total[i-1]>=total[j]: # 오른쪽에 있으면서 a[i-1]보다 큰 수
         j-=1
 
     total[i-1],total[j] = total[j],total[i-1]
     j=n
-    
+
     # i부터 내림차순 정렬
     while i <j:
         total[i], total[j] = total[j], total[i] # a[i]부터 순열 뒤집기
