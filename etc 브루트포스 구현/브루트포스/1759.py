@@ -24,12 +24,13 @@ for i in lst_str:
         small_lst.append(i)
     else:
         big_lst.append(i)
+
 total=[]
+# 2부터 시작해서 자음 2개 모음 1개 조건 만족
 for i in range(2,l):
     big_tmp=list(combinations(big_lst,i))
     small_tmp=list(combinations(small_lst,l-i))
-
-    
+    # tmp 리스트에 자음 모음 합치구 문자열로 바꿔주기
     for j in big_tmp:
         a=list(j)
         for k in small_tmp:
@@ -39,7 +40,7 @@ for i in range(2,l):
             s=','.join(tmp)
             s.replace(',','')
             total.append(s)
-                
+
 total.sort()
 for i in total:
     print(i.replace(',',''))
