@@ -11,7 +11,7 @@ def go(number,selected,n,m):
         return
     if number>n:
         return
-
+    
     lst[selected]=number
     go(number,selected+1,n,m)
     lst[selected]=0
