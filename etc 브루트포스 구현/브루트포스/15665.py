@@ -14,7 +14,7 @@ def go(cnt,n,m):
         print(" ".join(map(str,tmp)))
         return
     
-    for i in range(len(lst)):
+    for i in range(len(lst)):ㅇ
         tmp[cnt]=lst[i]
         go(cnt+1,n,m)
 
