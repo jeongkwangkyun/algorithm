@@ -13,7 +13,7 @@ for _ in range(n):
     lst.append(int(input()))
 
 dp[1]=lst[0]
-if n>2:
+if n>1:
     dp[2]=lst[0]+lst[1]
 
 for i in range(3,n+1):
