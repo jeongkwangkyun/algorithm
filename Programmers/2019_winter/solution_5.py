@@ -21,6 +21,7 @@ while queue:
 print(answer)
 
 # 효율성 통과 -> 카카오테크 정석
+# 해쉬맵을 사용해야 에러 안뜸 -> 10^12 이기 때문
 k=10
 room_number=[1,3,4,1,3,1]
 
@@ -33,7 +34,7 @@ def find(chk,rooms):
         return chk
 
     empty=find(rooms[chk],rooms)
-    # 빈방이 나오기 전 부모 노드 바꿔줌
+    # 빈방이 나오기 전 방문했던 부모 노드 바꿔줌
     rooms[chk]=empty+1
     return empty
 
