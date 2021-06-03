@@ -12,6 +12,7 @@ digit=list(input())
 
 s=[[0]*n for _ in range(n)]
 
+# result 인덱스까지 합을 구하고 s에 표시된 값과 비교
 def check(idx):
     hap=0
     for i in range(idx,-1,-1):
@@ -23,7 +24,7 @@ def check(idx):
         elif hap>0 and s[i][idx]<=0:
             return False
     return True
-
+# idx값을 비교해주는 함수 
 def solve(idx):
     if idx==n:
         return True
