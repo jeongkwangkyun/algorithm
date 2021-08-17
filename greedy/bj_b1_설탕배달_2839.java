@@ -2,7 +2,7 @@ package a0817;
 import java.io.*;
 import java.util.*;
 
-public class Main_bj_b1_설탕배달_2839_서울_12반_정광균 {
+public classbj_b1_설탕배달_2839 {
 	
 	public static void main(String[] args)throws Exception {
 		// TODO Auto-generated method stub
