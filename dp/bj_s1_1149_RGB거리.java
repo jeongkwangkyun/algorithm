@@ -9,7 +9,6 @@ import java.util.*;
 public class Main_bj_s1_1149_RGB거리_서울_12반_정광균 {
 
 	static int[][] weights;
-	static int tmp_idx, tmp_w;
 	
 	public static void main(String[] args)throws Exception {
 		// TODO Auto-generated method stub
