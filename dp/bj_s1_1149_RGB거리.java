@@ -7,7 +7,7 @@ import java.util.*;
 // weights에 red,blue,green 3가지 경우로 나눠서 원래 값에서
 // red 일 경우 weights[i-1]에 blue와 green 중 min 값을 더하
 public class Main_bj_s1_1149_RGB거리_서울_12반_정광균 {
-
+	//paint 값 배열 
 	static int[][] weights;
 	
 	public static void main(String[] args)throws Exception {
@@ -22,9 +22,7 @@ public class Main_bj_s1_1149_RGB거리_서울_12반_정광균 {
 				weights[i][j] = sc.nextInt();
 			}
 		}
-		// dp는 최소 비용을 저장하구 , idx 는 dp값에 저장된 idx 값
-		//
-		
+		// 기존 값에서 다른 컬러의 최솟값 더해주기 
 		for(int i=1 ; i<N ; i++) {
 			weights[i][0] += Math.min(weights[i-1][1],weights[i-1][2]);
 			weights[i][1] += Math.min(weights[i-1][0],weights[i-1][2]);
