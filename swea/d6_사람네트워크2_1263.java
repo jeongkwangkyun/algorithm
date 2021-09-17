@@ -3,7 +3,7 @@ package a0916;
 import java.io.*;
 import java.util.*;
 
-public class Solution_d6_사람네트워크2_1263_서울_12반_정광균 {
+public class 사람네트워크2_1263 {
     static final int INF=987654321;//Integer.MAX_VALUE/2;
     static int N,D[][];
     
