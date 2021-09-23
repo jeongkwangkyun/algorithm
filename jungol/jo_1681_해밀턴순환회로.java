@@ -9,7 +9,7 @@ public class jo_1681_해밀턴순환회로 {
 	static int[][] map;
 	
 	static int n , min_val=100000;
-	//순열 이
+	//순열 이용 
 	static int[] numbers;
 	static boolean[] isSelected;
 	
@@ -47,11 +47,11 @@ public class jo_1681_해밀턴순환회로 {
 		}
 
 	}
-	// val 백트래킹에 이
+	// val 백트래킹에 이용 
 	// min_val를 기준으로 순열이 돌때마다 val에 이동하기 위한 비용을 더해주며,
 	// 최소값보다 커지면 return
 	
-	// 출발지와 도착지가 회사므로 0->배달 장소의 순열 -> 0 으로 돌아온다고 로직 구
+	// 출발지와 도착지가 회사므로 0->배달 장소의 순열 -> 0 
 	private static void permutation(int cnt, int val) {
 		// TODO Auto-generated method stub
 		if(val>=min_val) return;
