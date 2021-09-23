@@ -56,15 +56,13 @@ public class jo_1681_해밀턴순환회로 {
 		// TODO Auto-generated method stub
 		if(val>=min_val) return;
 
-		if(cnt==n-1) {
-			int tmp;
-			//
-			tmp=val+map[numbers[n-2]][0];
-            if(tmp==0) return;
-            min_val=Math.min(val+tmp, min_val);
-			
-			return;
-		}
+		 if(cnt==n-1) {
+	            int tmp;
+	            tmp=map[numbers[n-2]][0];
+	            if(tmp==0) return;
+	            min_val=Math.min(val+tmp, min_val);
+	            return;
+	        }
 
 		for(int i=0; i<n-1; i++) {
 			if(isSelected[i]) continue;
