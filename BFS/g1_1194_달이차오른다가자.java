@@ -12,7 +12,7 @@ class Node{
 		this.key = key;
 	}
 }
-public class Main_bj_g1_1194_달이차오른다가자_서울_12반_정광균 {
+public class Main{
 	static char[][] board;
 	static boolean[][][] visited;
 	static Queue<Node> queue = new LinkedList<>();
