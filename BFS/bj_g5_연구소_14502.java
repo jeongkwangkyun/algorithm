@@ -57,6 +57,7 @@ public class bj_g5_연구소_14502 {
 		
 		for(int i=0;i<n;i++) {
 			for(int j=0;j<m;j++) {
+				//원본 복사 값
 				check[i][j]=graph[i][j];
 				if(check[i][j]==2) {
 					queue.add(new int[] {i,j});
