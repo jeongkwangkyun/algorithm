@@ -39,12 +39,12 @@ public class bj_g5_16234_인구이동 {
 						cur_y = j;
 						if(bfs()) {
 							okay = true;
-							res++;
 						}
 					}
 				}
 			}
 			if(okay == false) break;
+			else res++;
 		}
 		System.out.println(res);
 	}
