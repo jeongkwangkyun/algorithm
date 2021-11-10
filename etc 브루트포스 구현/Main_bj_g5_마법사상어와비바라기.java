@@ -95,23 +95,25 @@ public class Main_bj_g5_마법사상어와비바라기 {
 			int[] cur = cloud.poll();
 			int x = cur[0];
 			int y = cur[1];
-			s = s/N;
-			x = x + dx[dir]*s;
-			y = y + dy[dir]*s;
 			
-			if(0>x) {
-				x = N+x;
+			for(int j = 0 ; j<s ; j++){			
+				x = x + dx[dir];
+				y = y + dy[dir];
 				
-			}
-			else if(x>=N) {
-				x = x - N;
-			}
-			if(0>y) {
-				y = N+y;
-				
-			}
-			else if(y>=N) {
-				y = y - N;
+				if(0>x) {
+					x = N+x;
+					
+				}
+				else if(x>=N) {
+					x = x - N;
+				}
+				if(0>y) {
+					y = N+y;
+					
+				}
+				else if(y>=N) {
+					y = y - N;
+				}
 			}
 			cloud.add(new int[] {x,y});
 		}
