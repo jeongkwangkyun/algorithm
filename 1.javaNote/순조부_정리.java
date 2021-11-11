@@ -73,7 +73,7 @@ public class 순조부_정리 {
 		}
 		for(int i=start; i<n ; i++) {
 			number[cnt]=i+1;
-			combination(cnt+1, start+1);
+			combination(cnt+1, i+1);
 		}
 	}
 	// 순열 
