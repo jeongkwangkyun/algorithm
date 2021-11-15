@@ -35,6 +35,7 @@ public class 순조부_정리 {
 
 		// 현재 원소를 부분집합에 넣기
 		isSelected[cnt] = true;
+		
 		generateSubSet(cnt+1);
 		// 현재 원소를 부분집합에 넣지 않기
 		isSelected[cnt]= false;
