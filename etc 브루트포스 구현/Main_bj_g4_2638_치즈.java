@@ -3,14 +3,13 @@ package b0306;
 import java.io.*;
 import java.util.*;
 
-import com.sun.imageio.plugins.common.InputStreamAdapter;
-
 public class Main_bj_g4_2638_치즈 {
 	static int N,M,answer;
 	static int[][] map;
 	static boolean[][] visited;
 	static Queue<int[]> queue = new LinkedList<int[]>();
 	static Queue<int[]> meltingCheese = new LinkedList<int[]>();
+	static Queue<int[]> checkOutside = new LinkedList<int[]>();
 	static int[] dx = {0,1,0,-1};
 	static int[] dy = {1,0,-1,0};
 	
@@ -41,6 +40,7 @@ public class Main_bj_g4_2638_치즈 {
 		while(!queue.isEmpty()) {
 			answer ++;
 			int size = queue.size();
+			checkOutSide();
 			for(int i = 0 ; i < size ; i++) {
 				int[] cur = queue.poll();
 				int air = 0;
@@ -49,9 +49,8 @@ public class Main_bj_g4_2638_치즈 {
 					int ny = cur[1] + dy[j];
 					if(0 > nx || nx >= N || 0 > ny || ny >= M) continue;
 					
-					if(map[nx][ny] == 0) {
-						if(isOutSide(nx, ny)) air ++;
-					}
+					if(map[nx][ny] == 0 && visited[nx][ny] == true) air++; 
+					
 				}
 				
 				if(air >= 2) {
@@ -68,6 +67,23 @@ public class Main_bj_g4_2638_치즈 {
 			}
 			
 		}
+	}
+
+	private static void checkOutSide() {
+		visited = new boolean[N][M];
+		visited[0][0] = true;
+		checkOutside.add(new int[] {0, 0});
+		while(!checkOutside.isEmpty()) {
+			int[] cur = checkOutside.poll();
+			for(int i = 0 ; i < 4 ; i++) {
+				int nx = cur[0] + dx[i];
+				int ny = cur[1] + dy[i];
+				if(0 > nx || nx >= N || 0 > ny || ny >= M || map[nx][ny] == 1 || visited[nx][ny] == true) continue;
+				visited[nx][ny] = true;
+				checkOutside.add(new int[] {nx, ny});
+			}
+		}
+		
 	}
 
 }
