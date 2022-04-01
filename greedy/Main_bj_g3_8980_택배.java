@@ -32,20 +32,16 @@ public class Main_bj_g3_8980_택배 {
 				maxBoxNum = Math.min(maxBoxNum, list[i]);
 			}
 			
-			if(maxBoxNum >= town.box) {
-				ans += town.box;
-				for(int i = town.start ; i < town.end ; i++) {
-					list[i] -= town.box;
-				}
-				
-			}
+			int boardBoxNum = 0;
+			// start~end까지 적재 가능한 박스가 box양보다 큰 경우 ( 트력의 공간이 널널한 경우)
+			if(maxBoxNum >= town.box) boardBoxNum = town.box;
+			// start~end까지 적재 가능한 박스가 box양보다 작 경우 ( 트력의 공간이 부족한 경우)
+			else if(maxBoxNum < town.box) boardBoxNum = maxBoxNum;
 			
-			else if(maxBoxNum < town.box) {
-				ans += maxBoxNum;
-				for(int i = town.start ; i < town.end ; i++) {
-					list[i] -= maxBoxNum;
-				}
-				
+			ans += boardBoxNum;
+			
+			for(int i = town.start ; i < town.end ; i++) {
+				list[i] -= boardBoxNum;
 			}
 		}
 		
