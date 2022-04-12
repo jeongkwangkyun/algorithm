@@ -34,23 +34,21 @@ public class Main_bj_g5_5972_택배배송 {
 
 		distance[0] = 0;
 		
-		for(int i = 0 ; i < N ; i++) {
-			int min = INF;
-			int minVertex = -1;
+		PriorityQueue<Node> pq = new PriorityQueue<>();
+		pq.add(new Node(0, 0));
+		
+		while(!pq.isEmpty()) {
+			Node node = pq.poll();
+			int min = node.w;
+			int minVertex = node.v;
 			
-			for(int j = 0 ; j < N ; j++) {
-				if(!visited[j] && min > distance[j]) {
-					min = distance[j];
-					minVertex = j;
-				}
-			}
-			
-			if(minVertex == -1) break;
-			visited[minVertex] = true;
+			if(!visited[minVertex]) visited[minVertex] = true;
+			else continue;
 			
 			for(Node next : adjList[minVertex]) {
-				if(!visited[next.v] && distance[next.v] > next.w + min) {
-					distance[next.v] = next.w + min;
+				if(distance[next.v] > distance[minVertex] + next.w) {
+					distance[next.v] = distance[minVertex] + next.w;
+					pq.offer(new Node(next.v, distance[next.v]));
 				}
 			}
 		}
@@ -58,12 +56,15 @@ public class Main_bj_g5_5972_택배배송 {
 		System.out.println(distance[N - 1]);
 	}
 	
-	private static class Node{
+	private static class Node implements Comparable<Node>{
 		int v, w;
 		public Node(int v, int w) {
 			this.v = v;
 			this.w = w;
 		}
+		
+		public int compareTo(Node o) {
+			return this.w - o.w;
+		}
 	}
-
 }
