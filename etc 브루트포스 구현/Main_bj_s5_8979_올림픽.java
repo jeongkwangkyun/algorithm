@@ -22,16 +22,22 @@ public class Main_bj_s5_8979_올림픽 {
 		}
 		
 		int idx = 1;
+		int tmp = 0;
 		Node before = queue.poll();
 		while(!queue.isEmpty()) {
 			Node cur = queue.poll();
+		
 			if(before.idx == K) {
 				break;
 			}
 			
 			if(before.gold != cur.gold || before.silver != cur.silver || before.bronze != cur.bronze) {
 				idx ++;
+				idx += tmp;
+				tmp = 0;
 			}
+			
+			else tmp ++;
 			before = cur;
 			
 		}
