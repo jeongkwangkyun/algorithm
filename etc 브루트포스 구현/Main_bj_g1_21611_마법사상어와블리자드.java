@@ -52,52 +52,42 @@ public class Main_bj_g1_21611_마법사상어와블리자드 {
 	// 이것도 카피해서 map에 채워야할듯 
 	private static void makeGrouping() {
 		Queue<int[]> queue = new LinkedList<>();
+		int[] groupArr = new int[N * N];
+		int idx = 0;
 		
-		int[][] copyMap = new int[N][N];
-		
-		for(int i = 0 ; i < N ; i++) {
-			copyMap[i] = Arrays.copyOf(map[i], N);
-		}
-		map = new int[N][N];
-		
-		int copyX = N / 2;
-		int copyY = N / 2;
-		int copyDir = 0;
-		x = N / 2;
-		y = N / 2;
+		int curX = N / 2;
+		int curY = N / 2;
+		int dir = 0;
 		
 		int cnt = 0;
 		int len = 0;
-		int size = 1;
 		
 		Loop : while(true) {
 			for(int i = 0 ; i <= len ; i++) {	
-				int nx = copyX + dirX[copyDir];
-				int ny = copyY + dirY[copyDir];
+				int nx = curX + dirX[dir];
+				int ny = curY + dirY[dir];
 				
-				if(0 > nx || nx >= N || 0 > ny || ny >= N || copyMap[nx][ny] == 0) break Loop;
+				if(0 > nx || nx >= N || 0 > ny || ny >= N || map[nx][ny] == 0) break Loop;
+		
 				
 				// 같은 경우 
-				if(map[x][y] == map[nx][ny]) {
+				if(map[curX][curY] == map[nx][ny]) {
 					queue.offer(new int[] {nx, ny});
 				}
-				else {
-					if(size >= 4) {
-						while(!queue.isEmpty()) {
-							int[] cur = queue.poll();
-							countPoint(map[cur[0]][cur[1]]);
-							map[cur[0]][cur[1]] = 0;
-						}
-					}
-					else queue.clear();
-					
-					queue.add(new int[] {nx, ny});
-					size = 1;
-				}
-			
 				
-				copyX = nx;
-				copyY = ny;
+				else {					
+					if(idx <= groupArr.length - 1 && !queue.isEmpty()) {
+						groupArr[idx ++] = queue.size();
+					}
+					if(idx <= groupArr.length - 1 && !queue.isEmpty()) {
+						groupArr[idx ++] = map[curX][curY];
+					}
+					
+					queue.clear();
+					queue.add(new int[] {nx, ny});
+				}	
+				curX = nx;
+				curY = ny;
 			}
 			cnt += 1;
 			
@@ -105,7 +95,40 @@ public class Main_bj_g1_21611_마법사상어와블리자드 {
 				len ++;
 				cnt = 0;
 			}
-			copyDir = (copyDir + 1) % 4;	
+			dir = (dir + 1) % 4;	
+		}
+		
+		
+		map = new int[N][N];
+		
+		curX = N / 2;
+		curY = N / 2;
+		
+		int d = 0;
+		
+		cnt = 0;
+		len = 0;
+		idx = 0;
+		
+		Loop : while(true) {
+			for(int i = 0 ; i <= len ; i++) {				
+				int nx = curX + dirX[d];
+				int ny = curY + dirY[d];
+				
+				if(0 > nx || nx >= N || 0 > ny || ny >= N) break Loop;
+				
+				map[nx][ny] = groupArr[idx++];
+				
+				curX = nx;
+				curY = ny;
+			}
+			cnt += 1;
+			
+			if(cnt >= 2) {		
+				len ++;
+				cnt = 0;
+			}
+			d = (d + 1) % 4;
 		}
 	}
 
@@ -259,7 +282,7 @@ public class Main_bj_g1_21611_마법사상어와블리자드 {
 		for(int i = 0 ; i < s ; i++) {
 			x += dx[d];
 			y += dy[d];
-			
+			if(0 > x || x >= N || 0 > y || y >= N) break;
 			if(map[x][y] != 0) {
 
 				map[x][y] = 0;
