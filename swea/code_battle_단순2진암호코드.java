@@ -46,12 +46,12 @@ public class code_battle_단순2진암호코드 {
 					if (!check) continue Loop;
 				}
 				
-				for(int k=0; k<8; k=k+2) {
-					odd += list[k];
+				for(int j = 0; j < 8; j = j + 2) {
+					odd += list[j];
 				}
 				
-				for(int k=1; k<8; k=k+2) {
-					even += list[k];
+				for(int j = 1; j < 8; j = j + 2) {
+					even += list[j];
 				}
 				
 				if (((odd * 3 + even) % 10) == 0) {
